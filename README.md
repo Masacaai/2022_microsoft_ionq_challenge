@@ -1,8 +1,8 @@
 <p align="left"><h1>Team:</h1>
-- Fatema Patel,<br>
-- Mohammed Aaqel,<br>
-- Natasha Ninan, <br>
-- Anurag Trivedi.<br></p>
+- Fatema Patel<br>
+- Mohammed Aaqel<br>
+- Natasha Ninan<br>
+- Anurag Trivedi<br></p>
 
 <p align="left"><h1>Abstract</h1>
 
