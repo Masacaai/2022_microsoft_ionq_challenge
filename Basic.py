@@ -7,12 +7,15 @@
 import math
 import numpy
 import qiskit
-from qiskit import QuantumCircuit, Aer, execute
-from qiskit.visualization import plot_histogram
-#from qiskit.tools.monitor import job_monitor
-#from azure.quantum.qiskit import AzureQuantumProvider
+#from qiskit import QuantumCircuit, Aer, execute
+#from qiskit.visualization import plot_histogram
+from qiskit.tools.monitor import job_monitor
+from azure.quantum.qiskit import AzureQuantumProvider
 
-
+provider = AzureQuantumProvider (
+    resource_id = "/subscriptions/b1d7f7f8-743f-458e-b3a0-3e09734d716d/resourceGroups/aq-hackathons/providers/Microsoft.Quantum/Workspaces/aq-hackathon-01",
+    location = "eastus"
+)
 # In[1]:
 
 
@@ -22,7 +25,8 @@ cirk1 = QuantumCircuit(n, n)
 cirk1.initialize(qiskit.quantum_info.random_statevector(2).data,0)
 cirk1.initialize(qiskit.quantum_info.random_statevector(2).data,1)
 
-backend = Aer.get_backend('statevector_simulator')
+#backend = Aer.get_backend('statevector_simulator')
+backend = provider.get_backend("ionq.simulator")
 sv1 = execute(cirk1, backend).result().get_statevector(cirk1)
 states=['00','01','10','11']
 
@@ -120,7 +124,7 @@ def statevec_reveal(score,cirk1):
 
 def measurements():
 
-    sim = Aer.get_backend('aer_simulator') 
+    sim =   provider.get_backend("ionq.simulator")
     result = sim.run(cirk1).result()
     counts = result.get_counts()
   
