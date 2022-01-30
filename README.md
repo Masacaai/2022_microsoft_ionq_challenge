@@ -30,7 +30,7 @@ The code was implemented using qiskit and pygame and subsequently simulated on t
 <p align="left"><h1>Going forward</h1>
 
 We plan to introduce a GUI to the game using the Pygame Library. We worked on this feature during the hackathon, but were unable to complete in time. 
-The game saw the player dragging and dropping gates onto a grid to prevent the virus (red) from reaching the player (green). We were inspired by the level design in Plants vs Zombies.<br>
+The game saw the player dragging and dropping gates onto a grid to prevent the virus (red) from reaching the player (green). We were inspired by the level design in Plants vs Zombies.<br><br>
 ![Screenshot_2022-01-30_085358](https://user-images.githubusercontent.com/98426126/151709127-c2b3e376-bd56-4745-8684-aa76e2729f34.png)
 ![Screenshot_2022-01-30_085131](https://user-images.githubusercontent.com/98426126/151709144-30961f27-c2f7-44d4-b056-a1b37d3a0973.png)
 
