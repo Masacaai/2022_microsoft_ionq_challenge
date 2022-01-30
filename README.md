@@ -27,6 +27,12 @@ The purpose of this game is to reinforce the preventive measures that must be ta
 The code was implemented using qiskit and pygame and subsequently simulated on the IonQ simulator. In order to access the code, download the files, install qiskit and run (filenametoadd).
 </p>
 
+<p align="left"><h1>Going Forward</h1>
+![Screenshot_2022-01-30_085358](https://user-images.githubusercontent.com/98426126/151709127-c2b3e376-bd56-4745-8684-aa76e2729f34.png)
+![Screenshot_2022-01-30_085131](https://user-images.githubusercontent.com/98426126/151709144-30961f27-c2f7-44d4-b056-a1b37d3a0973.png)
+
+
+</p>
 
 <p align="left"><h1>Date</h1>
 January 30,2022
