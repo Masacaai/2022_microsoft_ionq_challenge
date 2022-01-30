@@ -3,7 +3,7 @@ Fatema Patel,Mohammed Aaqel,Natasha Ninan, Anurag Trivedi.<br></p>
 
 <p align="left"><h1>Abstract</h1>
 
-In the current pandemic stricken world, lockdowns and preventative measures are enforced on the daily. As observed over the past two years,the conscious effort to ensure one's safety is often ignored over one's desire to lead the same lifestyle as the one prior to the pandemic. This game serves as a reminder that the pandemic remains to be a health hazard and precautions need to observed. Moreover, since quantum computation is in its infancy with research developments occurring on the daily, beginners might have a hard time comprehending how qubits and qubit gates work. This game can be used to comprehend how a quantum circuits are implemented both on simulators and real quantum computers.
+In the current pandemic stricken world, lockdowns and preventative measures are enforced on the daily. As observed over the past two years, the conscious effort to ensure one's safety is often ignored over one's desire to lead the same lifestyle as the one prior to the pandemic. This game serves as a reminder that the pandemic remains to be a health hazard and precautions need to observed. Moreover, since quantum computation is in its infancy with research developments occurring on the daily, beginners might have a hard time comprehending how qubits and qubit gates work. This game can be used to comprehend how a quantum circuits are implemented both on simulators and real quantum computers.
 
 <p align="left"><ol> <h2>How to play the game:</h2>
  <ol>
