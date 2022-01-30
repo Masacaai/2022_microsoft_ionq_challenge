@@ -1,5 +1,5 @@
-import pygame
-import sys
+from helper import *
+from quantum import *
 from variables import *
 
 class inputbox:
@@ -11,18 +11,11 @@ class inputbox:
         self.active = False
 
     def handle_event(self, event):
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            # If the user clicked on the input_box rect.
-            if self.rect.collidepoint(event.pos):
-                # Toggle the active variable.
-                self.active = not self.active
-            else:
-                self.active = False
-            # Change the current color of the input box.
-            self.color = white if self.active else (255,0,0)
         if event.type == pygame.KEYDOWN:
             if self.active:
-                if event.key == pygame.K_BACKSPACE:
+                if event.key == pygame.K_RETURN:
+                    self.active = not self.active
+                elif event.key == pygame.K_BACKSPACE:
                     self.text = self.text[:-1]
                 else:
                     self.text += event.unicode
@@ -45,6 +38,10 @@ class mob(object):
         self.pos = pos
         self.color = color
 
+    def init_virus(self):
+        self.firststate = cirk1.initialize(qiskit.quantum_info.random_statevector(2).data, 0)
+        self.secondstate = cirk1.initialize(qiskit.quantum_info.random_statevector(2).data, 1)
+
     def move(self):
         self.pos = (self.pos[0] + 1, self.pos[1])
 
@@ -52,9 +49,10 @@ class mob(object):
         pygame.draw.circle(surface, self.color, self.pos, 30)
 
 class gate(object):
-    def __init__(self, color, pos):
+    def __init__(self, color, pos, type):
         self.pos = pos
         self.color = color
+        self.type = type
         self.rect = pygame.Rect(self.pos[0], self.pos[1], dis, dis)
         self.drag = False
         self.offset_x = 0
@@ -62,48 +60,30 @@ class gate(object):
         self.mouse_x = 0
         self.mouse_y = 0
 
-    def move(self):
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    pygame.quit()
-                    sys.exit()
+    def move(self, event):
 
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    if self.rect.collidepoint(event.pos):
-                        self.drag = True
-                        mouse_x, mouse_y = event.pos
-                        self.offset_x = self.rect.x - mouse_x
-                        self.offset_y = self.rect.y - mouse_y
-
-            elif event.type == pygame.MOUSEBUTTONUP:
-                if event.button == 1:
-                    if self.drag:
-                    #print("Before rect(x,y): ", self.rect.x, self.rect.y)
-                    #print("Before mouse coords: ", event.pos[0], event.pos[1])
-                    # Error: Due to the weird 1.5 row scaling, the tile sometimes snaps to the wrong container
-                    #if (self.rect.x % 40) > 20:
-                    #    self.rect.x = event.pos[0] - 40 - (event.pos[0] % 40)
-                    #    self.rect.y = event.pos[1] - 40 - (event.pos[1] % 40)
-                    #else:
-                        self.rect.x = self.mouse_x - (self.mouse_x % 80)
-                        self.rect.y = self.mouse_y - (self.mouse_y % 80)
-                        self.drag = False
-                    #print("After rect(x,y): ", self.rect.x, self.rect.y)
-                    #print("After mouse coords: ", self.mouse_x, self.mouse_y)
-            elif event.type == pygame.MOUSEMOTION:
+        if event.type == pygame.MOUSEBUTTONUP:
+            if event.button == 1:
                 if self.drag:
-                    self.mouse_x, self.mouse_y = event.pos
-                    self.rect.x = self.mouse_x + self.offset_x
-                    self.rect.y = self.mouse_y + self.offset_y
+                #print("Before rect(x,y): ", self.rect.x, self.rect.y)
+                #print("Before mouse coords: ", event.pos[0], event.pos[1])
+                # Error: Due to the weird 1.5 row scaling, the tile sometimes snaps to the wrong container
+                #if (self.rect.x % 40) > 20:
+                #    self.rect.x = event.pos[0] - 40 - (event.pos[0] % 40)
+                #    self.rect.y = event.pos[1] - 40 - (event.pos[1] % 40)
+                #else:
+                    self.rect.x = self.mouse_x - (self.mouse_x % 80)
+                    self.rect.y = self.mouse_y - (self.mouse_y % 80)
+                    self.drag = False
+                #print("After rect(x,y): ", self.rect.x, self.rect.y)
+                #print("After mouse coords: ", self.mouse_x, self.mouse_y)
+        elif event.type == pygame.MOUSEMOTION:
+            if self.drag:
+                self.mouse_x, self.mouse_y = event.pos
+                self.rect.x = self.mouse_x + self.offset_x
+                self.rect.y = self.mouse_y + self.offset_y
 
     def draw(self, surface):
         pygame.draw.rect(surface, self.color, self.rect)
+        words(self.type, 50, black, self.rect.x + 40, self.rect.y + 40, surface)
 
-class CNOT(gate):
-    def __init__(self, color, pos):
-        super().__init__(color, pos)
