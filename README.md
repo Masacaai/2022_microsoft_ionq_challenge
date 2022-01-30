@@ -24,7 +24,7 @@ The purpose of this game is to reinforce the preventive measures that must be ta
 
 <p align="left"><h1>Implementation Details</h1>
 
-The code was implemented using qiskit and pygame and subsequently simulated on the IonQ simulator. In order to access the code, download the files, install qiskit and run (filenametoadd).
+The code was implemented using qiskit and pygame and subsequently simulated on the IonQ simulator. In order to access the code, download the files, install qiskit and run basic.py.
 </p>
 
 <p align="left"><h1>Going forward</h1>
