@@ -19,14 +19,38 @@ intro = True
 main_menu = False
 instructions = False
 game = True
-over = True
+over = False
 scoreboard = False
 
-cube = gate(white, (241, 20))
+score = 500
+cube = gate(white, (241, 20), "H")
+gates_list = []
+gates_list.append(cube)
 virus = mob(red, (30, height // 2))
+virus.init_virus()
 person = mob(green, (1200, height // 2))
 textbox = inputbox(60, 650, 140, 32)
 
+'''
+def checkForCollision(virus, gate):
+    print(virus.pos, " and ", cube.rect.x, cube.rect.y)
+    if virus.pos[0] == cube.rect.x and cube.rect.y == 320:
+        print("Yes!")
+        if gate.type == "H":
+            question_text = "Enter qubit no this gate will be applied on:"
+            words(question_text,32,white,210,650,gameDisplay)
+            hadmad(gatenum, score, textbox)
+        if gate.type == "N":
+            contnot(gatenum,score)
+        if gate.type == "R":
+            rotz(gatenum, score)
+        if gate.type == "X":
+            paulx(gatenum,score)
+        if gate.type == "Y":
+            pauly(gatenum,score)
+        if gate.type == "Z":
+            paulz(gatenum,score)
+'''
 # Main game loop
 while loop:
     while intro:
@@ -77,21 +101,39 @@ while loop:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                # If the user clicked on the input_box rect.
+                if textbox.rect.collidepoint(event.pos):
+                    # Toggle the active variable.
+                    textbox.active = not textbox.active
+                else:
+                    textbox.active = False
+                # Change the current color of the input box.
+                textbox.color = white if textbox.active else (255, 0, 0)
+
+                if cube.rect.collidepoint(event.pos):
+                    cube.drag = True
+                    mouse_x, mouse_y = event.pos
+                    cube.offset_x = cube.rect.x - mouse_x
+                    cube.offset_y = cube.rect.y - mouse_y
+            cube.move(event)
             textbox.handle_event(event)
             textbox.update()
+
         pygame.time.delay(10)
         clock.tick()
         gameDisplay.fill(black)
+        textbox.draw(gameDisplay)
         drawGrid(width, rows, gameDisplay)
-        #virus.move()
+        virus.move()
+        score_count(20, 90, 20, score, gameDisplay)
         person.draw(gameDisplay)
         virus.draw(gameDisplay)
-        cube.move()
         cube.draw(gameDisplay)
-        textbox.draw(gameDisplay)
         if virus.pos == person.pos:
             game = False
         pygame.display.update()
+        clock.tick()
 
     while over:
         checkforexit()
