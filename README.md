@@ -17,6 +17,10 @@ In the current pandemic stricken world, lockdowns and preventative measures are 
  </ol></ol>
  </p>
 
+<p align="left"><h1>Whats quantum about it?</h1>
+
+The purpose of this game is to reinforce the preventive measures that must be taken during the ongoing pandemic. On further development, placing a gate would be identical to taking measures to prevent getting infected with the virus. The virus is represented in the form of two qubits and the goal of the game is to attain the highest probability for a given state in order to win the game. Thus, reaching the highest probable state would be similar to observing the maximum possible precautionary measures (such as getting the vaccine and social distancing) in order to avoid getting infected by the virus.
+</p>
 
 <p align="left"><h1>Implementation Details</h1>
 
