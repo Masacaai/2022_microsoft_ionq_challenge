@@ -9,7 +9,7 @@ In the current pandemic stricken world, lockdowns and preventative measures are 
  <ol>
   <li>On entering the game, the player is prompted to open the menu which contains a list of options. They can choose between the single qubit gates: Hadamard gate, Pauli X gate, Pauli Y gate ,Pauli Z gate and RZ gate. In addition, multi qubit gate such as  the CNOT gate has been included.</li>
   <li>On selection of the gate from the menu, the gate is applied to the qubit. For every gate added onto the qubit, points are deducted from the score value.</li>
-  <li>The game terminates either when a maximum of eleven gates are used or the score point has been depleted to zero</li>
+  <li>The game terminates either when a maximum of eleven gates are used or the score point has been depleted to zero.</li>
   <li>The qubits are measured and if the player manages to attain the required probability of a certain state, they win and a winning message is displayed. </li>
  </ol></ol>
  </p>
